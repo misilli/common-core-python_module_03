@@ -2,24 +2,25 @@ import sys
 
 def ft_command_quest() -> None:
     print("=== Player Score Analytics ===")
-    has_error = False
+    scores : list[int] = []
     for i in range(1, len(sys.argv)):
         try:
-            int(sys.argv[i])
+            scores.append(int(sys.argv[i]))
         except ValueError:
             print(f"Invalid parameter: '{sys.argv[i]}'")
-            has_error = True
 
-    if has_error:
-        sys.exit(1)
+    if len(scores) == 0:
+        print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2> ...")
+        return
     
-    print("Scores processed: ", sys.argv)
-    print("Total players: ", len(sys.argv) - 1)
-    print("Total scores: ", sum(sys.argv))
-    print("Arguments received: ", len(sys.argv) - 1)
-    for i in range(1, len(sys.argv)):
-        print(f"Argument {i}: {sys.argv[i]}")
-    print("Total arguments: ", len(sys.argv))
+    print("Scores processed: ", scores)
+    print("Total players: ", len(scores))
+    print("Total scores: ", sum(scores))
+    print("Average score: ", sum(scores) / len(scores))
+    print("High score: ", max(scores))
+    print("Low score: ", min(scores))
+    print("Score range: ", max(scores) - min(scores))
+
 
 if __name__ == "__main__":
 	ft_command_quest()
