@@ -1,0 +1,121 @@
+import random
+
+achievements = [
+    "Crafting Genius",
+    "Strategist",
+    "World Savior",
+    "Speed Runner",
+    "Survivor",
+    "Master Explorer",
+    "Treasure Hunter",
+    "Unstoppable",
+    "First Steps",
+    "Collector Supreme",
+    "Untouchable",
+    "Sharp Mind",
+    "Boss Slayer"
+]
+
+
+def ft_achievement_tracker() -> None:
+    print("=== Achievement Tracker System ===")
+    print()
+    alice_achievements = get_achievement()
+    bob_achievements = get_achievement()
+    charlie_achievements = get_achievement()
+    dylan_achievements = get_achievement()
+    print("Player Alice:", alice_achievements)
+    print("Player Bob:", bob_achievements)
+    print("Player Charlie:", charlie_achievements)
+    print("Player Dylan:", dylan_achievements)
+    print()
+    print(
+        "All distinct achievements:",
+        set.union(
+            alice_achievements,
+            bob_achievements,
+            charlie_achievements,
+            dylan_achievements,
+        ),
+    )
+    print()
+    print(
+        "Common achievements:",
+        set.intersection(
+            alice_achievements,
+            bob_achievements,
+            charlie_achievements,
+            dylan_achievements,
+        ),
+    )
+    print()
+    print("Only Alice has:", end=" ")
+    print(
+        set.difference(
+            alice_achievements,
+            set.union(
+                bob_achievements,
+                charlie_achievements,
+                dylan_achievements,
+            ),
+        )
+    )
+    print("Only Bob has:", end=" ")
+    print(
+        set.difference(
+            bob_achievements,
+            set.union(
+                alice_achievements,
+                charlie_achievements,
+                dylan_achievements,
+            ),
+        )
+    )
+    print("Only Charlie has:", end=" ")
+    print(
+        set.difference(
+            charlie_achievements,
+            set.union(
+                alice_achievements,
+                bob_achievements,
+                dylan_achievements,
+            ),
+        )
+    )
+    print("Only Dylan has:", end=" ")
+    print(
+        set.difference(
+            dylan_achievements,
+            set.union(
+                alice_achievements,
+                bob_achievements,
+                charlie_achievements,
+            ),
+        )
+    )
+    print()
+    print(
+        "alice is missing:",
+        set.difference(set(achievements), alice_achievements),
+    )
+    print(
+        "bob is missing:",
+        set.difference(set(achievements), bob_achievements),
+    )
+    print(
+        "charlie is missing:",
+        set.difference(set(achievements), charlie_achievements),
+    )
+    print(
+        "dylan is missing:",
+        set.difference(set(achievements), dylan_achievements),
+    )
+
+
+def get_achievement() -> set[str]:
+    quantity = random.randint(5, 9)
+    return set(random.sample(achievements, quantity))
+
+
+if __name__ == "__main__":
+    ft_achievement_tracker()
