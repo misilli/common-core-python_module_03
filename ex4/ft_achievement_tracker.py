@@ -1,9 +1,10 @@
 import sys
 
+
 def ft_achievement_tracker() -> None:
     print("=== Inventory System Analysis ===")
     inventory: dict[str, int] = {}
-    
+
     for arg in sys.argv[1:]:
         try:
             split = arg.split(":")
@@ -18,24 +19,36 @@ def ft_achievement_tracker() -> None:
             inventory[name] = quantity
         except ValueError as error:
             print(f"Quantity error for '{name}': {error}")
-        
-    
+
     print()
     print("Got inventory :", inventory)
     print("Item list:", list(inventory.keys()))
-    print(f"Total quantity of the {len(inventory.keys())} items: {sum(inventory.values())}")
-    for name in inventory.keys():
-        print(f"Item {name} represents {round(inventory[name] / sum(inventory.values()) * 100, 1)}%")
-    temp = list(inventory.keys())[0]
-    for name in inventory.keys():
-        if inventory[name] > inventory[temp]:
-            temp = name
-    print(f"Item most abundant: {temp} with quantity {inventory[temp]}")
-    for name in inventory.keys():
-        if inventory[name] < inventory[temp]:
-            temp = name
-    print(f"Item least abundant: {temp} with quantity {inventory[temp]}")
-    #inventor["magic_item"] = 1
+    total_items = len(inventory)
+    total_quantity = sum(inventory.values())
+    print(
+        f"Total quantity of the {total_items} items: "
+        f"{total_quantity}"
+    )
+    for name in inventory:
+        if total_quantity == 0:
+            percentage = 0.0
+        else:
+            percentage = round(inventory[name] / total_quantity * 100, 1)
+        print(f"Item {name} represents {percentage}%")
+
+    if inventory:
+        temp = next(iter(inventory))
+        for name in inventory:
+            if inventory[name] > inventory[temp]:
+                temp = name
+        print(f"Item most abundant: {temp} with quantity {inventory[temp]}")
+
+        temp = next(iter(inventory))
+        for name in inventory:
+            if inventory[name] < inventory[temp]:
+                temp = name
+        print(f"Item least abundant: {temp} with quantity {inventory[temp]}")
+
     print("Updated inventor :", inventory)
 
 
