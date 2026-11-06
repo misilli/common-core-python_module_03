@@ -15,9 +15,10 @@ def ft_achievement_tracker() -> None:
             if name in inventory:
                 print(f"Redundant item '{name}' - discarding")
                 continue
+            inventory[name] = quantity
         except ValueError as error:
             print(f"Quantity error for '{name}': {error}")
-        inventory[name] = quantity
+        
     
     print()
     print("Got inventory :", inventory)
@@ -25,7 +26,18 @@ def ft_achievement_tracker() -> None:
     print(f"Total quantity of the {len(inventory.keys())} items: {sum(inventory.values())}")
     for name in inventory.keys():
         print(f"Item {name} represents {round(inventory[name] / sum(inventory.values()) * 100, 1)}%")
-    print(f"Item Most abundant item:", max(inventory,  key=inventory.get))
+    temp = list(inventory.keys())[0]
+    for name in inventory.keys():
+        if inventory[name] > inventory[temp]:
+            temp = name
+    print(f"Item most abundant: {temp} with quantity {inventory[temp]}")
+    for name in inventory.keys():
+        if inventory[name] < inventory[temp]:
+            temp = name
+    print(f"Item least abundant: {temp} with quantity {inventory[temp]}")
+    #inventor["magic_item"] = 1
+    print("Updated inventor :", inventory)
+
 
 if __name__ == "__main__":
     ft_achievement_tracker()
