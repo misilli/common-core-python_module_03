@@ -20,8 +20,7 @@ def ft_achievement_tracker() -> None:
         except ValueError as error:
             print(f"Quantity error for '{name}': {error}")
 
-    print()
-    print("Got inventory :", inventory)
+    print("Got inventory:", inventory)
     print("Item list:", list(inventory.keys()))
     total_items = len(inventory)
     total_quantity = sum(inventory.values())
@@ -49,7 +48,7 @@ def ft_achievement_tracker() -> None:
                 temp = name
         print(f"Item least abundant: {temp} with quantity {inventory[temp]}")
 
-    print("Updated inventor :", inventory)
+    print("Updated inventory:", inventory)
 
 
 if __name__ == "__main__":

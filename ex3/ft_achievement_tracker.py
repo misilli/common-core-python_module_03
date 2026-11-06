@@ -100,10 +100,10 @@ def ft_achievement_tracker() -> None:
     bob_missing = all_achievements.difference(bob_achievements)
     charlie_missing = all_achievements.difference(charlie_achievements)
     dylan_missing = all_achievements.difference(dylan_achievements)
-    print("alice is missing:", alice_missing)
-    print("bob is missing:", bob_missing)
-    print("charlie is missing:", charlie_missing)
-    print("dylan is missing:", dylan_missing)
+    print("Alice is missing:", alice_missing)
+    print("Bob is missing:", bob_missing)
+    print("Charlie is missing:", charlie_missing)
+    print("Dylan is missing:", dylan_missing)
 
 
 def get_achievement() -> set[str]:
