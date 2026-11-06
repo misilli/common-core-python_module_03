@@ -106,7 +106,7 @@ def ft_achievement_tracker() -> None:
     print("Dylan is missing:", dylan_missing)
 
 
-def get_achievement() -> set[str]:
+def gen_player_achievement() -> set[str]:
     quantity = random.randint(5, 9)
     return set(random.sample(achievements, quantity))
 
