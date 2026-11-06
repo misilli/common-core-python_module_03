@@ -20,10 +20,10 @@ achievements = [
 def ft_achievement_tracker() -> None:
     print("=== Achievement Tracker System ===")
     print()
-    alice_achievements = get_achievement()
-    bob_achievements = get_achievement()
-    charlie_achievements = get_achievement()
-    dylan_achievements = get_achievement()
+    alice_achievements = gen_player_achievement()
+    bob_achievements = gen_player_achievement()
+    charlie_achievements = gen_player_achievement()
+    dylan_achievements = gen_player_achievement()
     print("Player Alice:", alice_achievements)
     print("Player Bob:", bob_achievements)
     print("Player Charlie:", charlie_achievements)
@@ -51,48 +51,36 @@ def ft_achievement_tracker() -> None:
     print()
     print("Only Alice has:", end=" ")
     print(
-        set.difference(
-            alice_achievements,
-            set.union(
-                bob_achievements,
-                charlie_achievements,
-                dylan_achievements,
-            ),
+        alice_achievements.difference(
+            bob_achievements |
+            charlie_achievements |
+            dylan_achievements
+            )
         )
-    )
     print("Only Bob has:", end=" ")
     print(
-        set.difference(
-            bob_achievements,
-            set.union(
-                alice_achievements,
-                charlie_achievements,
-                dylan_achievements,
-            ),
+        bob_achievements.difference(
+            alice_achievements |
+            charlie_achievements |
+            dylan_achievements
+            )
         )
-    )
     print("Only Charlie has:", end=" ")
     print(
-        set.difference(
-            charlie_achievements,
-            set.union(
-                alice_achievements,
-                bob_achievements,
-                dylan_achievements,
-            ),
+        charlie_achievements.difference(
+            alice_achievements |
+            bob_achievements |
+            dylan_achievements
+            )
         )
-    )
     print("Only Dylan has:", end=" ")
     print(
-        set.difference(
-            dylan_achievements,
-            set.union(
-                alice_achievements,
-                bob_achievements,
-                charlie_achievements,
-            ),
+        dylan_achievements.difference(
+            alice_achievements |
+            bob_achievements |
+            charlie_achievements
+            )
         )
-    )
     print()
 
     all_achievements = set(achievements)

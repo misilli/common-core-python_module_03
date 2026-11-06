@@ -10,7 +10,9 @@ def ft_command_quest() -> None:
         except ValueError:
             print(f"Invalid parameter: '{sys.argv[i]}'")
     if len(scores) == 0:
-        print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2> ...")
+        print("No scores provided. Usage: python3 ",
+              "ft_score_analytics.py <score1> <score2> ..."
+              )
         return
     print(f"Scores processed: {scores}")
     print(f"Total players: {len(scores)}")
